@@ -52,7 +52,7 @@ const handleOpen=()=>{
   return (
     <div>
       <div className='container col-10 border d-flex justify-content-center mt-5'>
-        <div className='col-4'>
+        <div className='col-4 mt-3'>
 
           <h2>Add Section</h2>
           <Form onSubmit={handleSubmit}>
@@ -76,12 +76,10 @@ const handleOpen=()=>{
             console.log(d)
             return <form>
 
-
             <div className='card mt-3'>
-
               <Accordion className='border'>
                 <AccordionItem eventKey={d} className=''>
-                  <AccordionHeader className='col-sm-12 btn btn-link btn-block text-left'><a>{"Section"} {d + 1}</a></AccordionHeader>
+                  <AccordionHeader className='col-sm-12'>{"Section"} {d + 1}</AccordionHeader>
 
                   <AccordionBody className='col-sm-12'>
                     {item.discription}
