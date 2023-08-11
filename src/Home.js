@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import AccordionItem from 'react-bootstrap/esm/AccordionItem';
 import AccordionHeader from 'react-bootstrap/esm/AccordionHeader';
 import AccordionBody from 'react-bootstrap/esm/AccordionBody';
+import { Button } from 'bootstrap';
 
 function Home() {
 
@@ -15,17 +16,17 @@ function Home() {
   const [data, setData] = useState([])
 
 
-const [open,setOpen]=useState(false)
-const [show, setShow]=useState("show")
+  const [open, setOpen] = useState(false)
+  const [show, setShow] = useState("show")
 
-const handleOpen=()=>{
-    if(open == true){
-     setShow("collapse show")
-    }else{
+  const handleOpen = () => {
+    if (open == true) {
+      setShow("collapse show")
+    } else {
       setShow("collapse")
     }
     setOpen(!open)
-}
+  }
 
 
 
@@ -51,42 +52,48 @@ const handleOpen=()=>{
 
   return (
     <div>
-      <div className='container col-10 border d-flex justify-content-center mt-5'>
-        <div className='col-4 mt-3'>
+      <div className='container col-12  d-flex justify-content-center mt-5'>
+        <div className='col-4 ' style={{border:"1px solid #ccc"}}>
 
-          <h2>Add Section</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Section Header</Form.Label>
-              <Form.Control type="text" name='header' placeholder="Enter Your Section" value={accord.header} onChange={handleChange} />
-            </Form.Group>
+              <h3>Add Section</h3>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="exampleForm.ControlInput1" className='form-group'>
+                  <Form.Label>Section Header</Form.Label>
+                  <Form.Control type="text" name='header' value={accord.header} onChange={handleChange} />
+                </Form.Group>
 
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Section Details</Form.Label>
-              <Form.Control as="textarea" rows={3} onChange={handleChange} name='discription' value={accord.discription} />
-            </Form.Group>
-            <div className="d-grid gap-2  mt-4 mb-5">
-              <button className="btn btn-primary" type="submit">Button</button>
-            </div>
-          </Form>
+                <Form.Group controlId="exampleForm.ControlTextarea1 " className='form-group'>
+                  <Form.Label>Section Details</Form.Label>
+                  <Form.Control as="textarea" rows={3} onChange={handleChange} name='discription' value={accord.discription} />
+                </Form.Group>
+                <div className="d-grid gap-2  mt-4 mb-5">
+                  <button className="btn btn-primary col-sm-12" type="submit">Add</button>
+                  {/* <Button  className="btn btn-primary" type="submit">Add</Button> */}
+                </div>
+              </Form>
+           
+
+
+         
         </div>
-        <div className='col-6 ml-5 ' style={{ margin: "0 0 0 50px" }}>
+
+        <div className='col-6 ml-5 ' style={{ margin: "0 0 0 50px" ,border:"1px solid #ccc" }}>
 
           {data.map((item, d) => {
             console.log(d)
             return <form>
 
-            <div className='card mt-3'>
-              <Accordion className='border'>
-                <AccordionItem eventKey={d} className=''>
-                  <AccordionHeader className='col-sm-12'>{"Section"} {d + 1}</AccordionHeader>
+              <div className='card mt-3'>
+                <Accordion className='border'>
+                  <AccordionItem eventKey={d} className=''>
+                    <AccordionHeader className='col-sm-12 btn-block text-left '>{item.header}</AccordionHeader>
 
-                  <AccordionBody className='col-sm-12'>
-                    {item.discription}
-                  </AccordionBody>
-                </AccordionItem>
-              </Accordion>
-            </div>
+                    <AccordionBody className='col-sm-12'>
+                      {item.discription}
+                    </AccordionBody>
+                  </AccordionItem>
+                </Accordion>
+              </div>
 
               {/* <div class="card-header" id={d}>
 
